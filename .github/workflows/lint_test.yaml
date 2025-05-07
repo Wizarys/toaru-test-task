@@ -1,0 +1,16 @@
+name: Lint and test push
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+jobs:
+  lint-test:
+    name: Lint Code
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - run: |
+          npm install
+          npm run lint
+          npm run test
